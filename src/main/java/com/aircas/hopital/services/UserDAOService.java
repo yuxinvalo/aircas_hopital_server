@@ -16,4 +16,9 @@ public class UserDAOService {
 	public List<UserDAO> list(){
 		return userRepo.findAll();
 	}
+	
+	public UserDAO addUser(UserDAO user){
+		UserDAO userSaved = userRepo.save(user);
+		return userSaved;
+	}
 }

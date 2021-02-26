@@ -60,7 +60,9 @@ public class DeviceDAO {
 	public void setAlarm(boolean alarm) {
 		this.alarm = alarm;
 	}
-	
-	
+	@Override
+	public String toString() {
+		return "DeviceDAO [id=" + id + ", frequency=" + frequency + ", power=" + power + ", progress=" + progress + ", ip_router=" + ip_router + ", ip_device=" + ip_device + ", alarm=" + alarm + "]";
+	}
 	
 }

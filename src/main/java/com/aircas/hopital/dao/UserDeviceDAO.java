@@ -7,7 +7,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -17,7 +16,7 @@ public class UserDeviceDAO {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@OneToOne(cascade = CascadeType.ALL)
+	@ManyToOne(cascade = {CascadeType.MERGE, CascadeType.REFRESH}, optional=false)
 	@JoinColumn(name = "id_device")
 	private DeviceDAO id_device;
 	
@@ -68,6 +67,9 @@ public class UserDeviceDAO {
 	public void setRoom(String room) {
 		this.room = room;
 	}
-	
-	
+
+	@Override
+	public String toString() {
+		return "UserDeviceDAO [id=" + id + ", id_device=" + id_device + ", id_user=" + id_user + ", bed_num=" + bed_num + ", room=" + room + "]";
+	}
 }

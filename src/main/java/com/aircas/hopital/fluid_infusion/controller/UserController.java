@@ -1,8 +1,14 @@
 package com.aircas.hopital.fluid_infusion.controller;
 
+import java.util.Date;
 import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -24,6 +30,24 @@ public class UserController {
     public Object getUsers(){
         List<UserDAO> users = userSevice.list();
         return  users;
+    }
+    
+    @PostMapping("/addUser")
+    @CrossOrigin
+    public Object addUsers(@RequestBody Map<String, String> user){
+    	UserDAO userObj = new UserDAO();
+    	String name = user.get("name");
+    	String login = user.get("login");
+    	String password = user.get("password");
+    	String phone = user.get("phone");
+    	userObj.setLogin(login);
+    	userObj.setName(name);
+    	userObj.setPassword(password);
+    	userObj.setPhone(phone);
+    	userObj.setLast_login_time(new Date());
+    	UserDAO userSaved = userSevice.addUser(userObj);
+    	System.out.println(userSaved);
+    	return "OK";
     }
 
 }
