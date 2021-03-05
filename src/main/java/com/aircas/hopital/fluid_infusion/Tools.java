@@ -14,4 +14,9 @@ public class Tools {
 		}
 		return strBuilder;
 	}
+	
+	public static long getTimeStamp(){
+		long time = System.currentTimeMillis();
+		return time/1000;
+	}
 }

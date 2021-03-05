@@ -26,7 +26,7 @@ public class GenSQLData {
 			phone = phoneHeader[rand.nextInt(phoneHeader.length)] + login;
 			sql = sql + "INSERT INTO " + tableName + " VALUES (" + i + ", '" + login + "', '"
 					+ name +"', '" + password + "', '" + lastLoginTime + "', '"
-					+ phone + "');\n"; 
+					+ phone + "', " + 0 +  ");\n"; 
 //			System.out.println(sql);
 		}
 		return sql;
